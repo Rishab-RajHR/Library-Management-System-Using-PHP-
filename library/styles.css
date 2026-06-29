@@ -1,0 +1,29 @@
+/* CSS for register.php, login.php page */
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.register
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.register input{
+    padding: 20px;
+    margin: 5px;
+    border: none;
+    border-bottom: 2px solid blue;
+}
+
+.register button{
+   padding: 20px;
+   width: 100%;
+   margin: 5px;
+   border-radius: 2px;
+   background-color: lightskyblue;
+}
