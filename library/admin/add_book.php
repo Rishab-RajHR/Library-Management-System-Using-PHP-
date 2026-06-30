@@ -5,20 +5,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $title = $_POST['title'];
     $author = $_POST['author'];
     $isbn = $_POST['isbn'];
-    $image = $_POST['image']['name'];
+    $image = $_FILES['image']['name'];
     $quantity = $_POST['quantity'];
 
     include "../db.php";
 
     $sql = "INSERT INTO books(
-          title,autthor,isbn,image,quantity) VALUES('$title','$author','$isbn','$image','$quantity')";
+          title,author,isbn,image,quantity) VALUES('$title','$author','$isbn','$image','$quantity')";
     $result = mysqli_query($conn,$sql);
     if(!$result){
        echo "Error!: {$conn->error}";
     }
     else{
        $image_location = $_FILES['image']['tmp_name'];
-       $upload_location = "../image";
+       $upload_location = "../image/".$image;
        move_uploaded_file($image_location, $upload_location.$image);
        echo "Book Added Successfully";
     }
@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 </head>
 <body>
   <div class="admin">
-     <form action="admin/add_book.php" method="post" enctype="form-data/multipart">
+     <form action="add_book.php" method="post" enctype="multipart/form-data">
       <input type="text" name="title" placeholder="Enter the Title"> <br>
       <input type="text" name="author" placeholder="Enter the Author"> <br>
       <input type="text" name="isbn" placeholder="Enter the ISBN"> <br>
