@@ -12,10 +12,14 @@
          if($row['password'] == $password){
               $_SESSION['user_id'] = $row['id'];
               $_SESSION['role'] = $row['role'];
-              header("Location:dashboard.php");
-              exit();
+              if($row['role'] == "admin"){
+                  header("admin/dashboard.php");
+              } 
+              else{
+                 header("Location:dashboard.php");
+              }
          }else{
-             header("Location:login.php");
+             header("Location: login.php");
          }
       }else{
          echo "Error: " . $conn->error;
