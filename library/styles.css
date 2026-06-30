@@ -28,3 +28,14 @@
    border-radius: 2px;
    background-color: lightskyblue;
 }
+
+/* admin add_book.php */
+
+.admin{
+     display: flex;
+     justify-content: center;
+     margin-top: 200px;
+}
+.admin input{
+    padding: 20px;
+}

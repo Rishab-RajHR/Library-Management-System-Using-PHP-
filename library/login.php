@@ -13,7 +13,7 @@
               $_SESSION['user_id'] = $row['id'];
               $_SESSION['role'] = $row['role'];
               if($row['role'] == "admin"){
-                  header("admin/dashboard.php");
+                  header("Location: admin/dashboard.php");
               } 
               else{
                  header("Location:dashboard.php");

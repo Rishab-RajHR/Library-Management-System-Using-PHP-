@@ -1,13 +1,15 @@
-<?php 
-include "db.php";
-echo "Welcome to dashboard";
+<?php
 session_start();
 if(isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
+    if($_SESSION['role'] == "user"){
+        echo "You are user";
+    }
+    else{
+       header("Location: admin/dashboard.php");
+    }
 }
 else{
-    header("Location: login.php");
-    exit();
+   header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -18,6 +20,6 @@ else{
   <title>Dashboard</title>
 </head>
 <body>
-  <a href="logout.php?user_id=<?php echo $user_id?>">Log Out</a>
+  <a href="logout.php">Log Out</a>
 </body>
 </html>
