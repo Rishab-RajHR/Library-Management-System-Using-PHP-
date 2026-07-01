@@ -1,7 +1,8 @@
 <?php
 session_start();
-
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if(isset($_SESSION['user_id'])){
+    if($_SESSION['role']=="admin"){
+      if($_SERVER['REQUEST_METHOD'] == "POST"){
     $title = $_POST['title'];
     $author = $_POST['author'];
     $isbn = $_POST['isbn'];
@@ -22,6 +23,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
        move_uploaded_file($image_location, $upload_location.$image);
        echo "Book Added Successfully";
     }
+  }
+ }
+}
+else{
+    header("Location: ../login.php");
 }
 ?>
 <!DOCTYPE html>

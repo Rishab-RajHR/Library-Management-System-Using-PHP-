@@ -1,14 +1,26 @@
 <?php
 session_start();
-include "../db.php";
-$sql = "select * from books";
-$result = mysqli_query($conn,$sql);
-if(!$result){
-   echo "Error: " . $conn->error;
+if(isset($_SESSION['user_id'])){
+    if($_SESSION['role']=="admin"){
+        include "../db.php";
+        $sql = "select * from books";
+        $result = mysqli_query($conn,$sql);
+        if(!$result){
+          echo "Error: " . $conn->error;
+        }
+        else{
+
+        }
+    }
+    else{
+       header("Location: ../dashboard.php");
+    }
 }
 else{
-
+     header("Location: ../login.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
