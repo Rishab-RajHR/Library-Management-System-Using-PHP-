@@ -1,0 +1,62 @@
+<?php
+session_start();
+include "../db.php";
+$sql = "select * from books";
+$result = mysqli_query($conn,$sql);
+if(!$result){
+   echo "Error: " . $conn->error;
+}
+else{
+
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <style type="text/css">
+      table{
+         border: none;
+         width: 100%;
+      }
+      tr, th{
+         border-bottom: 2px solid green;
+      }
+      td{
+        border: none;
+        text-align: center;
+        background-color: gray;
+      }
+  </style>
+</head>
+<body>
+    <table>
+         <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Image</th>
+                <th>Quantity</th>
+            </tr>
+         </thead>
+         <tbody>
+             <?php
+              while ($row = mysqli_fetch_assoc($result)) {
+                
+             ?>
+            <tr>
+               <td><?php echo "{$row['title']}"?></td>
+               <td><?php echo "{$row['author']}"?></td>
+               <td><?php echo "{$row['isbn']}"?></td>
+               <td><img src="../image/<?php echo "{$row['image']}"?>"></td>
+               <td><?php echo "{$row['quantity']}"?></td>
+            </tr>
+            
+            <?php    } ?>
+         </tbody>
+    </table>
+</body>
+</html>
