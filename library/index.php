@@ -67,6 +67,7 @@ $sql = "select * from books";
        <p>Author: <?php echo "{$row['author']}"?></p>
        <p>ISBN: <?php echo "{$row['isbn']}"?></p>
        <p>Quantity: <?php echo "{$row['quantity']}"?></p>
+       <a href="borrow.php?book_id=<?php echo "{$row['id']}";?>">Borrow</a>
   </div>
   <?php  } ?>
   </section>
