@@ -63,8 +63,8 @@ $sql = "select * from books";
     ?>
   <div>
        <img src="image/<?php echo "${$row['image']}"?>">
-       <h2>Book Title: <?php echo "{$row['title']}"?></h2>
-       <h3>Author: <?php echo "{$row['author']}"?></h3>
+       <p>Book Title: <?php echo "{$row['title']}"?></p>
+       <p>Author: <?php echo "{$row['author']}"?></p>
        <p>ISBN: <?php echo "{$row['isbn']}"?></p>
        <p>Quantity: <?php echo "{$row['quantity']}"?></p>
   </div>
